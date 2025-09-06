@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { authRoutes, publicRoutes } from "./router.link";
 import AuthFeature from "../authFeature";
-import Login from "../auth/login/Login";
+import Login from "@/feature-module/auth/login/Login";
 const ALLRoutes = () => {
     return (
       <>

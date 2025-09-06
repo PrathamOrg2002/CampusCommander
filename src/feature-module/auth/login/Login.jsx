@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { all_routes } from "../../router/all_routes"; // ⬅️ Comment if you don’t have routes
-import ImageWithBasePath from "../../../core/common/imageWithBasePath";
+import { all_routes } from "@/feature-module/router/all_routes"; // ⬅️ Comment if you don’t have routes
+import ImageWithBasePath from "@/core/common/imageWithBasePath";
 
 const Login = () => {
   const routes = all_routes; // ⬅️ Comment if routes not ready

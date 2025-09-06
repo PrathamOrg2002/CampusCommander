@@ -1,7 +1,7 @@
 import { Navigate, Route } from "react-router";
 import { all_routes } from "./all_routes";
-import Login from "src/feature-module/auth/login/Login";
-import ForgotPassword from "src/feature-module/auth/forgotPassword/ForgotPassword";
+import Login from "@/feature-module/auth/login/Login";
+import ForgotPassword from "@/feature-module/auth/forgotPassword/ForgotPassword";
 
 const routes = all_routes;
 export const publicRoutes = {
