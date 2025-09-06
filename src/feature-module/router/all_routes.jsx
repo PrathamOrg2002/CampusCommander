@@ -1,3 +1,5 @@
 export const all_routes = {
-    login: "/login"
+    login: "/login",
+      forgotPassword: "/forgot-password"
+
 };
