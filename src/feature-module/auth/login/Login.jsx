@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { all_routes } from "../../router/all_routes"; // ⬅️ Comment if you don’t have routes
+import { all_routes } from "../../router/all_routes"; // ⬅️ Comment if you don’t have routes
 import ImageWithBasePath from "../../../core/common/imageWithBasePath";
 
 const Login = () => {
-  // const routes = all_routes; // ⬅️ Comment if routes not ready
-//   const navigation = useNavigate();
+  const routes = all_routes; // ⬅️ Comment if routes not ready
+ //const navigation = useNavigate();
 
   const navigationPath = (e) => {
     e.preventDefault(); // prevent page refresh
@@ -129,12 +129,11 @@ const Login = () => {
                       </div>
                       <p className="ms-1 mb-0">Remember Me</p>
                     </div>
-                    <div className="text-end">
-                      {/* <Link to={routes.forgotPassword} className="link-danger">Forgot Password?</Link> */}
-                      <a href="#" className="link-danger">
-                        Forgot Password?
-                      </a>
-                    </div>
+                    <div className="text-end ">
+                        <Link to={routes.forgotPassword} className="link-danger">
+                          Forgot Password?
+                        </Link>
+                      </div>
                   </div>
 
                   {/* Sign In Button */}
