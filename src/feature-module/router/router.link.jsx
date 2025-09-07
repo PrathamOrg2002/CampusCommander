@@ -6,9 +6,6 @@ import Register from "@/feature-module/auth/register/Register";
 
 const routes = all_routes;
 export const publicRoutes = {
-  login: "/",
-  adminDashboard: "/admin-dashboard",
-  forgotPassword: "/forgot-password"
 };
 export const authRoutes = [
   {
