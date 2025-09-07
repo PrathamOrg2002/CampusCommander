@@ -11,6 +11,9 @@ import ResetPassword from "../auth/resetPassword/resetPassword";
 import ResetPasswordSuccess from "../auth/resetPasswordSuccess/resetPasswordSuccess";
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 const routes = all_routes;
@@ -44,6 +47,9 @@ export const authRoutes = [
   },{
     path: routes.resetPasswordSuccess,
     element: <ResetPasswordSuccess />,
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   }
 ];

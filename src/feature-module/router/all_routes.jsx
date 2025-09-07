@@ -9,6 +9,9 @@ export const all_routes = {
     resetPassword: "/reset-password",
       resetPasswordSuccess: "/reset-password-success"
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 };
