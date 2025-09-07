@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { all_routes } from "@/feature-module/router/all_routes"; // ⬅️ Comment if you don’t have routes
+import { all_routes } from "@/feature-module/router/all_routes"; 
 import ImageWithBasePath from "@/core/common/imageWithBasePath";
 
 const Login = () => {
-  const routes = all_routes; // ⬅️ Comment if routes not ready
+  const routes = all_routes; 
  //const navigation = useNavigate();
 
   const navigationPath = (e) => {
@@ -152,9 +152,10 @@ const Login = () => {
                     <h6 className="fw-normal text-dark mb-0">
                       Don’t have an account?{" "}
                       {/* <Link to={routes.register3} className="hover-a">Create Account</Link> */}
-                      <a href="#" className="hover-a">
+                      <Link to={routes.register} className="hover-a ">
+                        {" "}
                         Create Account
-                      </a>
+                      </Link>
                     </h6>
                   </div>
                 </div>
@@ -162,7 +163,7 @@ const Login = () => {
 
               {/* Footer */}
               <div className="p-4 text-center">
-                <p className="mb-0">Copyright © 2024 - Preskool</p>
+                <p className="mb-0">Copyright © 2025 - Campus Commander</p>
               </div>
             </div>
           </form>
