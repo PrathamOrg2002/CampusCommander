@@ -8,9 +8,6 @@ import ResetPasswordSuccess from "@/feature-module/auth/resetPasswordSuccess/res
 
 const routes = all_routes;
 export const publicRoutes = {
-  login: "/",
-  adminDashboard: "/admin-dashboard",
-  forgotPassword: "/forgot-password"
 };
 export const authRoutes = [
   {
