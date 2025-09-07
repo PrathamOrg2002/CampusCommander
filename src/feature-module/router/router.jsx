@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { authRoutes, publicRoutes } from "./router.link";
 import AuthFeature from "../authFeature";
+import Feature from "../feature";
 import Login from "@/feature-module/auth/login/Login";
 const ALLRoutes = () => {
     return (
@@ -11,11 +12,11 @@ const ALLRoutes = () => {
           <Route path="/" element={<Login />} />
   
           {/* Public Routes wrapped with Feature layout */}
-          <Route element={<Feature />}>
+          {/* <Route element={<Feature />}>
             {publicRoutes.map((route, idx) => (
               <Route path={route.path} element={route.element} key={idx} />
             ))}
-          </Route>
+          </Route> */}
   
           {/* Auth Routes wrapped with AuthFeature layout */}
           <Route element={<AuthFeature />}>
