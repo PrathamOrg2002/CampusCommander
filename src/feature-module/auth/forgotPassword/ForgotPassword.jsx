@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const navigation = useNavigate();
 
   const navigationPath = () => {
-    navigation(routes.resetPassword3);
+    navigation(routes.resetPassword);
   };
   
   return (
@@ -54,7 +54,7 @@ const ForgotPassword = () => {
                     <div className="text-center">
                       <h6 className="fw-normal text-dark mb-0">
                         Return to{" "}
-                        <Link to={routes.login3} className="hover-a ">
+                        <Link to={routes.login} className="hover-a ">
                           {" "}
                           Login
                         </Link>
@@ -63,7 +63,7 @@ const ForgotPassword = () => {
                   </div>
                 </div>
                 <div className="p-4 text-center">
-                  <p className="mb-0 ">Copyright © 2024 - Preskool</p>
+                  <p className="mb-0 ">Copyright © 2025 - Campus Commander</p>
                 </div>
               </div>
             </form>
