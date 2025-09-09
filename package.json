@@ -11,18 +11,24 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
+    "antd": "^5.27.3",
+    "apexcharts": "^5.3.5",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
+    "dayjs": "^1.11.18",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
     "react": "^19.1.1",
+    "react-apexcharts": "^1.7.0",
     "react-clock": "^6.0.0",
     "react-datetime-picker": "^7.0.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.8.2",
     "react-scrollbars-custom": "^4.1.1",
-    "react-time-picker": "^8.0.2"
+    "react-slick": "^0.31.0",
+    "react-time-picker": "^8.0.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
