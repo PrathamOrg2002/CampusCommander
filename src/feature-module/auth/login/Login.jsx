@@ -5,11 +5,11 @@ import ImageWithBasePath from "@/core/common/imageWithBasePath";
 
 const Login = () => {
   const routes = all_routes; 
- //const navigation = useNavigate();
+  const navigation = useNavigate();
 
   const navigationPath = (e) => {
     e.preventDefault(); // prevent page refresh
-    // navigation(routes.adminDashboard); // ⬅️ Enable when routes are ready
+    navigation(routes.teacherDashboard); // ⬅️ Enable when routes are ready
     console.log("Login clicked 🚀");
   };
 

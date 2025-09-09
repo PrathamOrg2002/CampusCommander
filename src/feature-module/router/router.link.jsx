@@ -5,10 +5,15 @@ import ForgotPassword from "@/feature-module/auth/forgotPassword/ForgotPassword"
 import Register from "@/feature-module/auth/register/Register";
 import ResetPassword from "@/feature-module/auth/resetPassword/resetPassword";
 import ResetPasswordSuccess from "@/feature-module/auth/resetPasswordSuccess/resetPasswordSuccess";
-
+import TeacherDashboard from "@/feature-module/mainMenu/teacherDashboard";
 const routes = all_routes;
-export const publicRoutes = {
-};
+export const publicRoutes = [
+  {
+    path: routes.teacherDashboard,
+    element: <TeacherDashboard />,
+    route: Route,
+  },
+];
 export const authRoutes = [
   {
     path: routes.login,
