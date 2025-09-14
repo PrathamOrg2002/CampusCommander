@@ -5,6 +5,7 @@ import Sidebar from "../core/common/sidebar";
 import ThemeSettings from "../core/common/theme-settings";
 import { useEffect, useState } from "react";
 import { all_routes } from "./router/all_routes";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Feature = () => {
   const routes = all_routes;
@@ -51,7 +52,13 @@ const Feature = () => {
 
   const Preloader = () => (
     <div id="global-loader">
-      <div className="page-loader"></div>
+      <div className="page-loader-1" style={{ width: "200px", height: "200px" }}>
+        <DotLottieReact
+          src="https://lottie.host/9a722d6a-0c84-4221-bd1d-5f94cd1d3cea/ubh0t5k4Fc.lottie"
+          loop
+          autoplay
+        />
+      </div>
     </div>
   );
 

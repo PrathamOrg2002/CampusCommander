@@ -9,7 +9,7 @@ const Login = () => {
 
   const navigationPath = (e) => {
     e.preventDefault(); // prevent page refresh
-    navigation(routes.teacherDashboard); // ⬅️ Enable when routes are ready
+    navigation(routes.adminDashboard); // ⬅️ Enable when routes are ready
     console.log("Login clicked 🚀");
   };
 
