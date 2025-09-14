@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { all_routes } from "../../router/all_routes";
 import ImageWithBasePath from "../../../core/common/imageWithBasePath";
-// import AdminDashboardModal from "../adminDashboard/adminDashboardModal";
+import AdminDashboardModal from "../adminDashboard/adminDashboardModal";
 import ReactApexChart from "react-apexcharts";
 import { Calendar } from "primereact/calendar";
 import Slider from "react-slick";
@@ -1551,7 +1551,7 @@ const TeacherDashboard = () => {
           </div>
         </div>
       </div>
-      {/* <AdminDashboardModal /> */}
+      <AdminDashboardModal />
       {/* /Page Wrapper */}
     </>
   );
