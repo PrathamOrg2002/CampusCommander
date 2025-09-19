@@ -1,4 +1,4 @@
-import { Navigate, Route } from "react-router";
+// router.link.jsx
 import { all_routes } from "./all_routes";
 import Login from "@/feature-module/auth/login/Login";
 import ForgotPassword from "@/feature-module/auth/forgotPassword/ForgotPassword";
@@ -8,84 +8,23 @@ import ResetPasswordSuccess from "@/feature-module/auth/resetPasswordSuccess/res
 import TeacherDashboard from "@/feature-module/mainMenu/teacherDashboard";
 import AdminDashboard from "@/feature-module/mainMenu/adminDashboard";
 import ParentDashboard from "@/feature-module/mainMenu/parentDashboard";
-import StudentDasboard from "@/feature-module//mainMenu/studentDashboard";
-
-//import ParentList from "../peoples/parent/parent-list";
-
-
+import StudentDashboard from "@/feature-module/mainMenu/studentDashboard";
 
 const routes = all_routes;
+
+// ✅ Public routes (no login required)
 export const publicRoutes = [
-  {
-    path: routes.teacherDashboard,
-    element: <TeacherDashboard />,
-    route: Route,
-  }, 
-  {
-    path: routes.parentDashboard,
-    element: <ParentDashboard />,
-    route: Route,
-  },
-   {
-    path: routes.adminDashboard,
-    element: <AdminDashboard />,
-    route: Route,
-  },
-  {
-    path: routes.studentDashboard,
-    element: <StudentDasboard />,
-    route: Route,
-  },
-
-
-
-// {
-//     path: routes.parentGrid,
-//     element: <ParentGrid />,
-//   },
-//   {
-//     path: routes.parentList,
-//     element: <ParentList />,
-//   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  { path: routes.login, element: <Login /> },
+  { path: routes.forgotPassword, element: <ForgotPassword /> },
+  { path: routes.register, element: <Register /> },
+  { path: routes.resetPassword, element: <ResetPassword /> },
+  { path: routes.resetPasswordSuccess, element: <ResetPasswordSuccess /> },
 ];
+
+// ✅ Protected routes (login required)
 export const authRoutes = [
-  {
-    path: routes.login,
-    element: <Login />,
-    route: Route,
-  },
-  {
-    path: routes.forgotPassword,
-    element: <ForgotPassword />,
-    route: Route,
-  },
-  {
-    path: routes.register,
-    element: <Register />,
-    route: Route,
-  },
-  {
-    path: routes.resetPassword,
-    element: <ResetPassword />,
-    route: Route,
-  },{
-    path: routes.resetPasswordSuccess,
-    element: <ResetPasswordSuccess />,
-  }
+  { path: routes.adminDashboard, element: <AdminDashboard /> },
+  { path: routes.teacherDashboard, element: <TeacherDashboard /> },
+  { path: routes.parentDashboard, element: <ParentDashboard /> },
+  { path: routes.studentDashboard, element: <StudentDashboard /> },
 ];

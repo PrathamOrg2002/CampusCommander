@@ -1,32 +1,33 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router";
-import { authRoutes, publicRoutes } from "./router.link";
-import AuthFeature from "../authFeature";
-import Feature from "../feature";
-import Login from "@/feature-module/auth/login/Login";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { publicRoutes, authRoutes } from "./router.link";
+import Feature from "../feature";          // layout for dashboard pages
+import AuthFeature from "../authFeature";  // layout for login/register pages
+import PrivateRoute from "@/feature-module/routes/PrivateRoute";
+
 const ALLRoutes = () => {
-    return (
-      <>
-        <Routes>
-          {/* Default Login Route */}
-          <Route path="/" element={<Login />} />
-  
-          {/* Public Routes wrapped with Feature layout */}
-          <Route element={<Feature />}>
-            {publicRoutes.map((route, idx) => (
-              <Route path={route.path} element={route.element} key={idx} />
-            ))}
-          </Route>
-  
-          {/* Auth Routes wrapped with AuthFeature layout */}
-          <Route element={<AuthFeature />}>
-            {authRoutes.map((route, idx) => (
-              <Route path={route.path} element={route.element} key={idx} />
-            ))}
-          </Route>
-        </Routes>
-      </>
-    );
-  };
-  
-  export default ALLRoutes;
+  return (
+    <Routes>
+      {/* Public routes (login, register, etc.) */}
+      <Route element={<AuthFeature />}>
+        {publicRoutes.map((r, idx) => (
+          <Route path={r.path} element={r.element} key={idx} />
+        ))}
+      </Route>
+
+      {/* Protected routes (dashboard, etc.) */}
+      <Route element={<PrivateRoute />}>
+        <Route element={<Feature />}>
+          {authRoutes.map((r, idx) => (
+            <Route path={r.path} element={r.element} key={idx} />
+          ))}
+        </Route>
+      </Route>
+
+      {/* Catch all unknown routes */}
+      <Route path="*" element={<Navigate to="/login" replace />} />
+    </Routes>
+  );
+};
+
+export default ALLRoutes;

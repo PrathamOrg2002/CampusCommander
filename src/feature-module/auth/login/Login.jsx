@@ -1,34 +1,46 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { all_routes } from "@/feature-module/router/all_routes"; 
 import ImageWithBasePath from "@/core/common/imageWithBasePath";
 
 const Login = () => {
   const routes = all_routes; 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
-  const navigationPath = (e) => {
-    e.preventDefault(); // prevent page refresh
-    navigation(routes.adminDashboard); // ⬅️ Enable when routes are ready
-    console.log("Login clicked 🚀");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const [passwordVisibility, setPasswordVisibility] = useState({
-    password: false,
-  });
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
 
-  const togglePasswordVisibility = (field) => {
-    setPasswordVisibility((prevState) => ({
-      ...prevState,
-      [field]: !prevState[field],
-    }));
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/api/login", formData);
+
+      // Save token
+      localStorage.setItem("token", res.data.token);
+
+      // Redirect
+      navigate(routes.adminDashboard);
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid credentials");
+    }
   };
 
   return (
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-5 mx-auto">
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="d-flex flex-column justify-content-between vh-100">
               {/* Logo */}
               <div className="mx-auto p-4 text-center">
@@ -47,116 +59,73 @@ const Login = () => {
                     <p className="mb-0">Please enter your details to sign in</p>
                   </div>
 
-                  {/* Social Buttons */}
-                  <div className="mt-4">
-                    <div className="d-flex align-items-center justify-content-center flex-wrap">
-                      <div className="text-center me-2 flex-fill">
-                        <a
-                          href="#"
-                          className="bg-primary br-10 p-2 btn btn-primary d-flex align-items-center justify-content-center"
-                        >
-                          <ImageWithBasePath
-                            className="img-fluid m-1"
-                            src="assets/img/icons/facebook-logo.svg"
-                            alt="Facebook"
-                          />
-                        </a>
-                      </div>
-                      <div className="text-center me-2 flex-fill">
-                        <a
-                          href="#"
-                          className="br-10 p-2 btn btn-outline-light d-flex align-items-center justify-content-center"
-                        >
-                          <ImageWithBasePath
-                            className="img-fluid m-1"
-                            src="assets/img/icons/google-logo.svg"
-                            alt="Google"
-                          />
-                        </a>
-                      </div>
-                      <div className="text-center flex-fill">
-                        <a
-                          href="#"
-                          className="bg-dark br-10 p-2 btn btn-dark d-flex align-items-center justify-content-center"
-                        >
-                          <ImageWithBasePath
-                            className="img-fluid m-1"
-                            src="assets/img/icons/apple-logo.svg"
-                            alt="Apple"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  {error && <p className="text-danger text-center">{error}</p>}
 
-                  <div className="login-or">
-                    <span className="span-or">Or</span>
-                  </div>
-
-                  {/* Email + Password */}
+                  {/* Email */}
                   <div className="mb-3">
                     <label className="form-label">Email Address</label>
                     <div className="input-icon mb-3 position-relative">
                       <span className="input-icon-addon">
                         <i className="ti ti-mail" />
                       </span>
-                      <input type="text" className="form-control" />
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="form-control"
+                        required
+                      />
                     </div>
+                  </div>
 
+                  {/* Password */}
+                  <div className="mb-3">
                     <label className="form-label">Password</label>
                     <div className="pass-group">
                       <input
-                        type={passwordVisibility.password ? "text" : "password"}
-                        className="pass-input form-control"
+                        type={passwordVisible ? "text" : "password"}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="form-control"
+                        required
                       />
                       <span
                         className={`ti toggle-passwords ${
-                          passwordVisibility.password ? "ti-eye" : "ti-eye-off"
+                          passwordVisible ? "ti-eye" : "ti-eye-off"
                         }`}
-                        onClick={() => togglePasswordVisibility("password")}
+                        onClick={() => setPasswordVisible(!passwordVisible)}
                       ></span>
                     </div>
                   </div>
 
                   {/* Remember + Forgot */}
-                  <div className="form-wrap form-wrap-checkbox mb-3">
-                    <div className="d-flex align-items-center">
-                      <div className="form-check form-check-md mb-0">
-                        <input
-                          className="form-check-input mt-0"
-                          type="checkbox"
-                        />
-                      </div>
-                      <p className="ms-1 mb-0">Remember Me</p>
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <div className="form-check">
+                      <input className="form-check-input" type="checkbox" />
+                      <label className="form-check-label">Remember Me</label>
                     </div>
-                    <div className="text-end ">
-                        <Link to={routes.forgotPassword} className="link-danger">
-                          Forgot Password?
-                        </Link>
-                      </div>
+                    <Link to={routes.forgotPassword} className="link-danger">
+                      Forgot Password?
+                    </Link>
                   </div>
 
-                  {/* Sign In Button */}
+                  {/* Submit */}
                   <div className="mb-3">
-                    <button
-                      type="submit"
-                      className="btn btn-primary w-100"
-                      onClick={navigationPath}
-                    >
+                    <button type="submit" className="btn btn-primary w-100">
                       Sign In
                     </button>
                   </div>
 
-                  {/* Register Link */}
+                  {/* Register */}
                   <div className="text-center">
-                    <h6 className="fw-normal text-dark mb-0">
+                    <p className="mb-0">
                       Don’t have an account?{" "}
-                      {/* <Link to={routes.register3} className="hover-a">Create Account</Link> */}
-                      <Link to={routes.register} className="hover-a ">
-                        {" "}
+                      <Link to={routes.register} className="hover-a">
                         Create Account
                       </Link>
-                    </h6>
+                    </p>
                   </div>
                 </div>
               </div>
